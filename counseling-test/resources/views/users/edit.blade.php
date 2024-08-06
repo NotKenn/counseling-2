@@ -43,7 +43,8 @@
                 <div class="mb-3">
                     <select type="text" class="form-control" value="{{old('role', $users->role)}}" placeholder="Role" name="role" id="role" aria-label="role">
                         <option value ="Admin"> Admin </option>
-                        <option value ="User"> Konselor </option>
+                        <option value ="Konselor"> Konselor </option>
+                        <option value ="User"> User </option>
                     </select>
                     @error('role')
                       <p class="text-danger text-xs mt-2">{{ $message }}</p>
