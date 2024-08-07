@@ -10,15 +10,6 @@
                     <div class="card-header">Create Note</div>
 
                     <div class="card-body">
-                        @if($previousNotes->isEmpty())
-                            <p>No previous counseling found</p>
-                        @else
-                            <ul>
-                                @foreach($previousNotes as $note)
-                                    <li>{{ $note->tglKonseling }}: {{ $note->deskripsiMasalah }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
 
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -59,7 +50,7 @@
 
                             <div class="form-group">
                                 <label>Konseling Baru</label>
-                                <select type="text" class="form-control" id="isNew" name="isNew">
+                                <select type="text" value="{{ old('isNew', $note->isNew) }}" class="form-control" id="isNew" name="isNew">
                                     <option value="Yes"> Baru </option>
                                     <option value="No"> Sudah Ada </option>
                                 </select>
@@ -67,7 +58,7 @@
 
                             <div class="form-group">
                                 <label for="description">Jenis Konseling</label>
-                                <select type="text" class="form-control" id="jenisKonseling" name="jenisKonseling">
+                                <select type="text" class="form-control" value="{{ old('jenisKonseling', $note->jenisKonseling) }}" id="jenisKonseling" name="jenisKonseling">
                                     <option value="Pribadi"> Pribadi </option>
                                     <option value="Akademik"> Akademik</option>
                                     <option value="Sosial"> Sosial </option>
@@ -77,42 +68,42 @@
 
                             <div class="form-group">
                                 <label for="description">Tanggal Konseling</label>
-                                <input type="date" class="form-control" id="tglKonseling" name="tglKonseling">
+                                <input type="date" class="form-control" value="{{ old('tglKonseling', $note->tglKonseling) }}" id="tglKonseling" name="tglKonseling">
                             </div>
 
                             <div class="form-group">
                                 <label for="description">Deskripsi Umum</label>
-                                <input type="text" class="form-control" id="deskripsiUmum" name="deskripsiUmum">
+                                <input type="text" class="form-control" value="{{ old('deskripsiUmum', $note->deskripsiUmum) }}" id="deskripsiUmum" name="deskripsiUmum">
                             </div>
 
                             <div class="form-group">
                                 <label for="description">Deskripsi Masalah</label>
-                                <textarea type="text" class="form-control" id="deskripsiMasalah" name="deskripsiMasalah"></textarea>
+                                <textarea type="text" class="form-control"  id="deskripsiMasalah" name="deskripsiMasalah">{{ old('deskripsiMasalah', $note->deskripsiMasalah) }}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="description">Tindakan</label>
-                                <input type="text" class="form-control" id="tindakan" name="tindakan">
+                                <input type="text" class="form-control" value="{{ old('tindakan', $note->tindakan) }}" id="tindakan" name="tindakan">
                             </div>
 
                             <div class="form-group">
                                 <label for="description">Catatan</label>
-                                <input type="text" class="form-control" id="catatan" name="catatan">
+                                <input type="text" class="form-control" value="{{ old('catatan', $note->catatan) }}" id="catatan" name="catatan">
                             </div>
 
                             <div class="form-group">
                                 <label for="description">Rencana Tindak Lanjut</label>
-                                <input type="text" class="form-control" id="rencanaTindakLanjut" name="rencanaTindakLanjut">
+                                <input type="text" class="form-control" value="{{ old('rencanaTindakLanjut', $note->rencanaTindakLanjut) }}" id="rencanaTindakLanjut" name="rencanaTindakLanjut">
                             </div>
 
                             <div class="form-group">
                                 <label for="description">Tanggal Rencana Tindak Lanjut</label>
-                                <input type="date" class="form-control" id="tglRTL" name="tglRTL">
+                                <input type="date" class="form-control" value="{{ old('tglRTL', $note->tglRTL) }}" id="tglRTL" name="tglRTL">
                             </div>
 
                             <div class="form-group">
                                 <label for="description">Status</label>
-                                <select type="text" class="form-control" id="status" name="status">
+                                <select type="text" class="form-control" value="{{ old('status', $note->status) }}" id="status" name="status">
                                     <option value ="Selesai"> Selesai </option>
                                     <option value ="Dalam Pemantauan"> Dalam Pemantauan </option>
                                     <option value ="Tidak Selesai"> Tidak Selesai </option>

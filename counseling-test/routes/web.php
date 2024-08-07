@@ -82,9 +82,12 @@ Route::get('noteInd/destroy/{id}', [App\Http\Controllers\noteIndController::clas
 Route::get('/noteInd/{id}/edit-step1', [App\Http\Controllers\noteIndController::class, 'editStep1'])->name('noteind.editstep1');
 Route::post('/noteInd/{id}/edit-step2', [App\Http\Controllers\noteIndController::class, 'editStep2'])->name('noteind.editstep2');
 Route::post('/noteInd/{id}/update', [App\Http\Controllers\noteIndController::class, 'update'])->name('noteind.update');
+Route::get('noteInd/printPdf', [App\Http\Controllers\noteIndController::class, 'cetak_pdf'])->name('noteInd.printPdf');
+Route::get('/noteInd-detail1', [App\Http\Controllers\noteIndController::class, 'detailStep1'])->name('noteind.detailstep1');
+Route::post('/noteInd-detail2', [App\Http\Controllers\noteIndController::class, 'detailStep2'])->name('noteind.detailstep2');
+
 //Note Kelompok
 Route::resource('/noteKel', App\Http\Controllers\noteKelController::class)->except(['show']);
-Route::get('noteInd/printPdf', [App\Http\Controllers\noteIndController::class, 'cetak_pdf'])->name('noteInd.printPdf');
 Route::get('noteKel/destroy/{id}', [App\Http\Controllers\noteKelController::class, 'destroy'])->name('noteKel.destroy');
 Route::get('noteKel/printPdf', [\App\Http\Controllers\noteKelController::class, 'cetak_pdf'])->name('notekel.printPdf');
 // Prestasi

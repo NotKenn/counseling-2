@@ -126,4 +126,20 @@ class noteIndController extends Controller
         $pdf = Pdf::loadview('noteInd.printNote',['notes'=>$notes, 'student'>$students])->setpaper('A4', 'Landscape');
         return $pdf->stream('Data-Notes-Individuals.pdf');
     }
+    public function detailStep1()
+    {
+        $students = Students::all(); // Mengambil semua data siswa
+        $users = User::all();
+        return view('noteInd.detailstep1', compact('students', 'users'));
+    }
+    public function detailStep2(Request $request)
+    {
+        $notes = ModelsNoteIndividu::all();
+        $studentId = $request->input('students_id');
+        $users = User::all();
+        $student = Students::get()->where('NISN', $studentId);
+        $previousNotes = ModelsNoteIndividu::where('students_id', $studentId)->orderBy('tglKonseling', 'desc')->get();
+        
+        return view('noteind.detailstep2', compact('notes', 'student', 'previousNotes', 'studentId', 'users'));
+    }
 }
